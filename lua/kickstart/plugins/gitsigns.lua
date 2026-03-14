@@ -1,7 +1,3 @@
--- Adds git related signs to the gutter, as well as utilities for managing changes
--- NOTE: gitsigns is already included in init.lua but contains only the base
--- config. This will add also the recommended keymaps.
-
 ---@module 'lazy'
 ---@type LazySpec
 return {
@@ -10,6 +6,13 @@ return {
   ---@type Gitsigns.Config
   ---@diagnostic disable-next-line: missing-fields
   opts = {
+    signs = {
+      add = { text = '+' }, ---@diagnostic disable-line: missing-fields
+      change = { text = '~' }, ---@diagnostic disable-line: missing-fields
+      delete = { text = '_' }, ---@diagnostic disable-line: missing-fields
+      topdelete = { text = '‾' }, ---@diagnostic disable-line: missing-fields
+      changedelete = { text = '~' }, ---@diagnostic disable-line: missing-fields
+    },
     on_attach = function(bufnr)
       local gitsigns = require 'gitsigns'
 
@@ -20,7 +23,7 @@ return {
       end
 
       -- Navigation
-      map('n', ']c', function()
+      map('n', ']h', function()
         if vim.wo.diff then
           vim.cmd.normal { ']c', bang = true }
         else
@@ -28,7 +31,7 @@ return {
         end
       end, { desc = 'Jump to next git [c]hange' })
 
-      map('n', '[c', function()
+      map('n', '[h', function()
         if vim.wo.diff then
           vim.cmd.normal { '[c', bang = true }
         else
