@@ -1,9 +1,26 @@
 return {
-  'ellisonleao/gruvbox.nvim',
-  priority = 1000, -- Make sure to load this before all the other start plugins.
-  config = function()
-    require('gruvbox').setup {}
-
-    vim.cmd.colorscheme 'gruvbox'
-  end,
+  {
+    'ellisonleao/gruvbox.nvim',
+    priority = 1000,
+    config = function()
+      require('gruvbox').setup {}
+      vim.cmd.colorscheme 'gruvbox'
+    end,
+  },
+  {
+    'rose-pine/neovim',
+    name = 'rosepine',
+    priority = 1000,
+    config = function() require('rose-pine').setup {} end,
+  },
+  {
+    'folke/tokyonight.nvim',
+    priority = 1000,
+    config = function() require('tokyonight').setup {} end,
+  },
+  {
+    'olimorris/onedarkpro.nvim',
+    priority = 1000,
+    config = function() require('onedarkpro').setup {} end,
+  },
 }
